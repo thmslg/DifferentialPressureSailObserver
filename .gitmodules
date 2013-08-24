@@ -1,3 +1,6 @@
 [submodule "Components/OO-IO"]
 	path = Components/OO-IO
 	url = https://github.com/thomasleguillou/OO-IO.git
+[submodule "Components/Utils"]
+	path = Components/Utils
+	url = https://github.com/thomasleguillou/utils.git
