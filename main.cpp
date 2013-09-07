@@ -1,6 +1,5 @@
 #include "Components/OO-IO/MPXV7002.h"
-#include <glib.h>
-#include <glib/gprintf.h>
+
 #include <errno.h>
 #include <string.h>
 #include <stdio.h>
@@ -28,14 +27,14 @@ int main()
 	MPXV7002 dummySensor(pouet);
 
 	int file;
-	char *filename = "/dev/i2c-2";
+	char *filename = "/dev/i2c-1";
 	if ((file = open(filename, O_RDWR)) < 0) {
 	    /* ERROR HANDLING: you can check errno to see what went wrong */
 	    perror("Failed to open the i2c bus");
 	    exit(1);
 	}
 
-	int addr = 0b00101001;          // The I2C address of the ADC
+	int addr = 0x68;          // The I2C address of the ADC
 	if (ioctl(file, I2C_SLAVE, addr) < 0) {
 	    printf("Failed to acquire bus access and/or talk to slave.\n");
 	    /* ERROR HANDLING; you can check errno to see what went wrong */
@@ -51,8 +50,6 @@ int main()
 	    if (read(file,buf,2) != 2) {
 	        /* ERROR HANDLING: i2c transaction failed */
 	        printf("Failed to read from the i2c bus.\n");
-	        buffer = g_strerror(errno);
-	        printf(buffer);
 	        printf("\n\n");
 	    } else {
 	        data = (float)((buf[0] & 0b00001111)<<8)+buf[1];
