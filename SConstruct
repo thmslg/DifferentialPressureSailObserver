@@ -4,7 +4,9 @@ Export('env')
 
 #build external libraries
 utils = env.SConscript('Components/Utils/SConscript' )
-env.Append(LIBS=utils)
+env.Prepend(LIBS=utils)
 
 ooio = env.SConscript('Components/OO-IO/SConscript' )
-env.Append(LIBS=ooio)
+env.Prepend(LIBS=ooio)
+
+env.Program('DifferentialPressureSailObserver','main.cpp')
