@@ -4,3 +4,6 @@
 [submodule "Components/Utils"]
 	path = Components/Utils
 	url = https://github.com/thomasleguillou/utils.git
+[submodule "Components/RaspberryPiUtils"]
+	path = Components/RaspberryPiUtils
+	url = https://github.com/thomasleguillou/RaspberryPiUtils.git
